@@ -16,6 +16,35 @@
       <div class="rebilly-instruments"></div>
     </div>
 
+    <div id="widget">
+      <h3>Support our developer</h3>
+      <form action="donation.html" method="get" id="donate-form">
+        <input
+          type="radio"
+          id="switch-donation-monthly"
+          name="type"
+          value="recurring"
+        />
+        <label for="switch-donation-monthly">Recurring</label>
+
+        <input
+          type="radio"
+          id="switch-donation-one-time"
+          name="type"
+          value="one-time"
+          checked
+        />
+        <label for="switch-donation-one-time">One Time</label>
+
+        <br />
+        <label for="amount">
+          Amount<input type="number" name="amount" id="amount" value="1"
+        /></label>
+        <br />
+        <input type="submit" value="Donate" />
+      </form>
+    </div>
+
     <script src="./index.mjs" defer type="module"></script>
   </body>
 </html>
