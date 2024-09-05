@@ -63,6 +63,7 @@ button.addEventListener("click", async function () {
     e.target.disabled = false;
   }
 });
+
 // Optional
 /*RebillyInstruments.on("instrument-ready", (instrument) => {
   console.info("instrument-ready", instrument);
@@ -70,3 +71,10 @@ button.addEventListener("click", async function () {
 RebillyInstruments.on("purchase-completed", (purchase) => {
   console.info("purchase-completed", purchase);
 });*/
+/*
+document
+  .getElementById("donate-form")
+  .addEventListener("submit", async function () {
+    RebillyInstruments.destroy(config);
+  });
+*/
