@@ -1,19 +1,14 @@
 import "./styles.css";
+import { baseConfig } from "./instruments.mjs";
 
 let config = {
-  organizationId: "phronesis-villanest",
-  publishableKey: "pk_sandbox_ex-Kc1qd58lihJnsejLtQMpzBBlVRu-YtsNqEG4",
-  websiteId: "www.example.com-phronesis-villanest",
-  apiMode: "sandbox",
+  ...baseConfig,
   items: [
     {
       planId: "premium-monthly",
       quantity: 1,
     },
   ],
-  theme: {
-    colorPrimary: "#2B2D42",
-  },
   paymentInstruments: {
     address: {
       name: "stacked",

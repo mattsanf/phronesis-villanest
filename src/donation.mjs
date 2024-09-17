@@ -1,10 +1,10 @@
+import "./styles.css";
+import { baseConfig } from "./instruments.mjs";
+
 const params = new URLSearchParams(window.location.search);
 
 let config = {
-  organizationId: "phronesis-villanest",
-  publishableKey: "pk_sandbox_ex-Kc1qd58lihJnsejLtQMpzBBlVRu-YtsNqEG4",
-  websiteId: "www.example.com-phronesis-villanest",
-  apiMode: "sandbox",
+  ...baseConfig,
 };
 
 if (params.get("type") === "one-time") {

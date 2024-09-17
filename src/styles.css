@@ -1,3 +1,82 @@
-body {
-  font-family: sans-serif;
+body,
+html {
+  background: #fff;
+  padding: 0;
+  margin: 0;
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  display: flex;
+}
+
+section {
+  flex: 0 1 55%;
+  box-sizing: border-box;
+  height: 100vh;
+  background: #ffffff;
+  padding: 1em;
+}
+
+section + section {
+  flex: 0 1 45%;
+  background: #f9fafb;
+  border-left: 1px solid #e1e1e1;
+}
+
+form-wrapper {
+  max-width: 500px;
+  margin: 0 20px 0 auto;
+  box-sizing: border-box;
+  padding: 60px 0;
+  text-align: left;
+}
+
+rebilly-instruments-summary {
+  margin: 60px 40px 0 20px;
+}
+
+@media (max-width: 600px) {
+  #app {
+    flex-direction: column-reverse;
+  }
+
+  rebilly-instruments-summary {
+    margin: 0;
+    margin: 20px;
+  }
+
+  form-wrapper {
+    max-width: auto;
+    margin: 0;
+    padding: 20px;
+    text-align: left;
+  }
+}
+
+.btn-outline {
+  font-size: var(--rebilly-buttonFontSize);
+  font-family: var(--rebilly-buttonFontFamily);
+  line-height: var(--rebilly-buttonFontLineHeight);
+  padding: var(--rebilly-spacingS);
+  box-sizing: border-box;
+  color: var(--rebilly-colorPrimary);
+  border-color: var(--rebilly-colorPrimary);
+  background: transparent;
+  border-radius: var(--rebilly-buttonBorderRadius);
+  font-weight: var(--rebilly-buttonFontWeight);
+  margin: calc(var(--rebilly-spacing2xs) + var(--rebilly-spacingS) / 2) 0;
+  width: 100%;
+  cursor: pointer;
+  min-height: 44px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.m-t-0 {
+  margin-top: 0;
 }
