@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Sandbox</title>
+    <meta charset="UTF-8" />
+    <script
+      src="https://cdn.rebilly.com/instruments/@latest/core.js"
+      type="text/javascript"
+    ></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <table id="invoices">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Issued date</th>
+            <th>Status</th>
+            <th>Amount Due</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="invoices"></tbody>
+      </table>
+    </div>
+
+    <script src="./invoices.mjs" defer type="module"></script>
+  </body>
+</html>
