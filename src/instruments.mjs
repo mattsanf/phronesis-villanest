@@ -25,4 +25,15 @@ export const baseConfig = {
   apiMode,
   theme,
   css,
+  features: {
+    showConsentCheck: ["form"],
+  },
+  i18n: {
+    en: {
+      consentCheck: {
+        agreeToTOS:
+          "I agree to the [terms of service](https://www.example.com/tos) and the [privacy policy](https://www.example.com/privacy)",
+      },
+    },
+  },
 };
