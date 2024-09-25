@@ -1,6 +1,8 @@
 import "./styles.css";
+import "./invoices.css";
 import RebillyAPI from "rebilly-js-sdk";
 import { RebillyStorefrontAPI } from "rebilly-js-sdk";
+import { utcToZonedTime, format } from "date-fns-tz";
 import { baseConfig } from "./instruments.mjs";
 const customerId = "cus_01J56B1FAQ1M4Y29E3VWCB41EQ";
 
@@ -71,11 +73,11 @@ const customerId = "cus_01J56B1FAQ1M4Y29E3VWCB41EQ";
       "beforeEnd",
       `
         <tr>
-        <td>${invoice.id}</td>
-        <td>${invoice.issuedTime}</td>
-        <td>${invoice.status}</td>
-        <td>${invoice.amountDue}</td>
-        <td id="${invoice.id}-actions"></td>
+          <td class="rigth">${invoice.id}</td>
+          <td>${formatDate(invoice.issuedTime)}</td>
+          <td>${invoice.status}</td>
+          <td>${formatCurrency(invoice.amountDue, invoice.currency)}</td>
+          <td id="${invoice.id}-actions"></td>
         </tr>
       `
     );
@@ -92,3 +94,24 @@ const customerId = "cus_01J56B1FAQ1M4Y29E3VWCB41EQ";
     }
   }
 })();
+
+function formatCurrency(number, currency = "USD", options = {}) {
+  const numberValue = Number(number);
+  if (
+    Number.isNaN(numberValue) ||
+    number == null ||
+    number.toString().length === 0
+  )
+    return "-";
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency,
+    ...options,
+  }).format(numberValue);
+}
+
+function formatDate(date, template = "PPP KK:mm") {
+  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const zonedTime = utcToZonedTime(date, timeZone);
+  return format(zonedTime, template);
+}
