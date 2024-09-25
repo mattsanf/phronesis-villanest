@@ -1,6 +1,5 @@
 import "./styles.css";
 import RebillyAPI from "rebilly-js-sdk";
-import { RebillyStorefrontAPI } from "rebilly-js-sdk";
 import { baseConfig } from "./instruments.mjs";
 const customerId = "cus_01J56B1FAQ1M4Y29E3VWCB41EQ";
 const params = new URLSearchParams(window.location.search);
@@ -57,9 +56,14 @@ const params = new URLSearchParams(window.location.search);
       },
     });
 
-  RebillyInstruments.mount({
+  const config = {
+    ...baseConfig,
     jwt: exchangeToken.token,
-    apiMode: "sandbox",
     invoiceId: params.get("id"),
-  });
+  };
+  delete config.publishableKey;
+  delete config.websiteId;
+  delete config.organizationId;
+
+  RebillyInstruments.mount(config);
 })();
