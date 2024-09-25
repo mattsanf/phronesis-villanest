@@ -66,7 +66,7 @@ const customerId = "cus_01J56B1FAQ1M4Y29E3VWCB41EQ";
   invoices = invoices.map(({ fields }) => fields);
 
   let table = document.querySelector("tbody");
-  for (invoice of invoices) {
+  for (let invoice of invoices) {
     table.insertAdjacentHTML(
       "beforeEnd",
       `
