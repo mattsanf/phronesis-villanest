@@ -38,6 +38,16 @@ onMounted(async () => {
     currency: "USD",
   };
   RebillyInstruments.mount(config);
+
+  RebillyInstruments.on("purchase-completed", async (transaction) => {
+    console.log(transaction);
+    const response = await api.invoices.applyTransaction({
+      id: invoiceId,
+      data: {
+        transactionId: transaction.id,
+      },
+    });
+  });
 });
 
 function updateAmount(amount) {
