@@ -1,0 +1,71 @@
+.form-field {
+  margin: calc(var(--rebilly-spacingXs) + var(--rebilly-spacingS)) 0;
+  position: relative;
+}
+
+.form-field-group {
+  display: flex;
+  justify-content: space-around;
+  margin: calc(var(--rebilly-spacingXs) + var(--rebilly-spacingS)) 0;
+}
+
+.form-field-group > .form-field {
+  margin: 0;
+}
+
+.form-field-label {
+  font-family: var(--rebilly-fontFamily);
+  font-size: var(--rebilly-fontSizeS);
+  line-height: var(--rebilly-fontLineHeightS);
+  margin-bottom: var(--rebilly-spacing2xs);
+}
+
+.form-field-input {
+  font-size: var(--rebilly-inputFontSize);
+  font-family: var(--rebilly-inputFontFamily);
+  font-weight: var(--rebilly-inputFontWeight);
+  line-height: var(--rebilly-inputFontLineHeight);
+  padding: var(--rebilly-spacingXs) var(--rebilly-spacingS);
+  min-height: var(--rebilly-spacingFormElementMinHeight);
+  border: var(--rebilly-inputBorder);
+  border-radius: var(--rebilly-inputBorderRadius);
+  color: var(--rebilly-inputColorText);
+  background: var(--rebilly-inputColorBackground);
+  box-sizing: border-box;
+  box-shadow: var(--rebilly-inputBoxShadow);
+  width: 100%;
+  transition: all 0.2s;
+  order: 1;
+}
+
+.form-field-radio {
+  margin: 0;
+  margin-right: var(--rebilly-spacingXs);
+}
+
+.form-field:has(.form-field-radio) {
+  display: flex;
+  justify-content: center;
+}
+
+.form-field:has(.form-field-radio) > .form-field-label {
+  margin: 0;
+}
+
+.form-field-button-input {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.form-field-button-input > .form-field-input {
+  flex-grow: 1;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+  background: #ffffff;
+}
+.form-field-button-input > .rebilly-instruments-button {
+  width: 25%;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}

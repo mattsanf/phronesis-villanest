@@ -1,0 +1,17 @@
+:root {
+  --rebilly-fontFamily: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+
+  font-family: var(--rebilly-fontFamily);
+  font-size: var(--rebilly-fontSizeBase);
+  line-height: var(--rebilly-fontLineHeightBase);
+}
