@@ -1,26 +1,26 @@
 import {
   organizationId,
   websiteId,
-  secretKey as apiKey
+  secretKey as apiKey,
 } from "../../components/RebillyInstruments";
 import RebillyAPI, { RebillyStorefrontAPI } from "rebilly-js-sdk";
 
 const api = new RebillyAPI({
-    apiKey,
-    organizationId,
-    sandbox: true,
-  });
+  apiKey,
+  organizationId,
+  sandbox: true,
+});
 const storefrontApi = new RebillyStorefrontAPI({
-    apiKey,
-    organizationId,
-    sandbox: true,
-  });
+  apiKey,
+  organizationId,
+  sandbox: true,
+});
 
 export function useRebillySDK() {
   api.storefront = storefrontApi;
 
   api.actions = {
-    passwordlessLogin: async ({customerId}) => {
+    passwordlessLogin: async ({ customerId }) => {
       const { fields: login } = await api.customerAuthentication.login({
         data: {
           mode: "passwordless",
@@ -29,44 +29,47 @@ export function useRebillySDK() {
       });
 
       const { fields: exchangeToken } =
-      await api.customerAuthentication.exchangeToken({
-        token: login.token,
-        data: {
-          acl: [
-            {
-              scope: {
-                organizationId: [organizationId],
+        await api.customerAuthentication.exchangeToken({
+          token: login.token,
+          data: {
+            acl: [
+              {
+                scope: {
+                  organizationId: [organizationId],
+                },
+                permissions: [
+                  "PostToken",
+                  "PostDigitalWalletValidation",
+                  "StorefrontGetAccount",
+                  "StorefrontPatchAccount",
+                  "StorefrontPostPayment",
+                  "StorefrontGetTransaction",
+                  "StorefrontGetPaymentInstrumentCollection",
+                  "StorefrontPostPaymentInstrument",
+                  "StorefrontGetPaymentInstrument",
+                  "StorefrontPatchPaymentInstrument",
+                  "StorefrontPostPaymentInstrumentDeactivation",
+                  "StorefrontGetWebsite",
+                  "StorefrontGetInvoiceCollection",
+                  "StorefrontGetInvoice",
+                  "StorefrontGetProductCollection",
+                  "StorefrontGetProduct",
+                  "StorefrontPostReadyToPay",
+                  "StorefrontPostPreviewPurchase",
+                  "StorefrontGetDepositRequest",
+                  "StorefrontGetDepositStrategy",
+                  "StorefrontPostDeposit",
+                ],
               },
-              permissions: [
-                "PostToken",
-                "PostDigitalWalletValidation",
-                "StorefrontGetAccount",
-                "StorefrontPatchAccount",
-                "StorefrontPostPayment",
-                "StorefrontGetTransaction",
-                "StorefrontGetPaymentInstrumentCollection",
-                "StorefrontPostPaymentInstrument",
-                "StorefrontGetPaymentInstrument",
-                "StorefrontPatchPaymentInstrument",
-                "StorefrontPostPaymentInstrumentDeactivation",
-                "StorefrontGetWebsite",
-                "StorefrontGetInvoiceCollection",
-                "StorefrontGetInvoice",
-                "StorefrontGetProductCollection",
-                "StorefrontGetProduct",
-                "StorefrontPostReadyToPay",
-                "StorefrontPostPreviewPurchase",
-              ],
+            ],
+            customClaims: {
+              websiteId: websiteId,
             },
-          ],
-          customClaims: {
-            websiteId: websiteId,
           },
-        },
-      });
+        });
 
       return exchangeToken;
-    }
-  }
+    },
+  };
   return api;
 }

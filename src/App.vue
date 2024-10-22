@@ -4,6 +4,7 @@
       <li><router-link :to="{ name: 'subscribe' }">Subscribe</router-link></li>
       <li><router-link :to="{ name: 'rent' }">Rent</router-link></li>
       <li><router-link :to="{ name: 'invoices' }">Invoices</router-link></li>
+      <li><router-link :to="{ name: 'casino' }">Casino</router-link></li>
       <li><router-link :to="{ name: 'debriefs' }">Debriefs</router-link></li>
     </ul>
   </nav>
