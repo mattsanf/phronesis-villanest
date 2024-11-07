@@ -8,7 +8,7 @@ import Debrief from "../../components/Debrief.vue";
     :team="['Samuel Lafrenaye', 'Matthew Sanford']"
   >
     <template #made-you-smile>
-      <p>??</p>
+      <p>figuring out the markup was on the conversion rate </p>
     </template>
     <template #find-confusing>
       <ul>
