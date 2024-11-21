@@ -1,40 +1,37 @@
 <script setup>
-import { onMounted, reactive } from "vue";
+import { onMounted, reactive, watch } from "vue";
 import RebillyInstrumentsLayout from "../components/RebillyInstrumentsLayout.vue";
 import { useBaseConfig, websiteId } from "../components/RebillyInstruments.js";
 import { useRebillySDK } from "../vendor/rebilly-js-sdk/index.js";
 
 const api = useRebillySDK();
 const state = reactive({
-  currency: 'USD',
-  token: null
-})
-
-onMounted(async () => {
-  const password = await api.actions.passwordlessLogin({
-    customerId: "cus_01J56B1FAQ1M4Y29E3VWCB41EQ",
-  });
-  state.token = password.token;
+  showAmountInput: true,
+  currency: "USD",
+  amount: 150,
+  token: null,
 });
 
-const changeCurrency = async (currency) => {
-  state.currency = currency;
-  if (RebillyInstruments.state.hasMounted) {
-    RebillyInstruments.destroy();
+watch(
+  () => state.showAmountInput,
+  (newState) => {
+    console.log({ newState });
+    if (newState === true) {
+      RebillyInstruments.destroy();
+    }
   }
-  const strategyId =
-    state.currency === "CAD"
-      ? "dep_str_01JATHJ48E2YS93BVZPH30S87N"
-      : "dep_str_01JATHGCV7GZ9XJXH1MQ5CRXYN";
+);
 
-  const requestDepositData = {
+async function applyButton() {
+  state.showAmountInput = false;
+  const requestPayoutData = {
     websiteId: websiteId,
     customerId: "cus_01J56B1FAQ1M4Y29E3VWCB41EQ",
     currency: state.currency,
-    strategyId: strategyId,
+    amount: state.amount,
   };
-  const { fields: depositFields } = await api.depositRequests.create({
-    data: requestDepositData,
+  const { fields: payoutFields } = await api.payoutRequests.create({
+    data: requestPayoutData,
   });
 
   const config = {
@@ -42,19 +39,55 @@ const changeCurrency = async (currency) => {
       deleteKeys: ["publishableKey", "websiteId", "organizationId"],
     }),
     jwt: state.token,
-    deposit: {
-      depositRequestId: depositFields.id,
+    payout: {
+      payoutRequestId: payoutFields.id,
     },
   };
 
   RebillyInstruments.mount(config);
 }
+
+onMounted(async () => {
+  const password = await api.actions.passwordlessLogin({
+    customerId: "cus_01J56B1FAQ1M4Y29E3VWCB41EQ",
+  });
+  state.token = password.token;
+});
 </script>
 
 <template>
   <RebillyInstrumentsLayout>
-    <template #pre-form>
-      
+    <template #pre-form v-if="state.showAmountInput">
+      <div class="form-field">
+        <label class="form-field-label" for="amount">Amount</label>
+        <input
+          id="amount"
+          type="number"
+          step="0.01"
+          class="form-field-input"
+          placeholder="20.00"
+          v-model="state.amount"
+          required
+        />
+      </div>
+
+      <button
+        @click="applyButton"
+        type="submit"
+        class="rebilly-instruments-button"
+        style="margin-top: 1rem"
+      >
+        Apply
+      </button>
+    </template>
+    <template #pre-form v-else>
+      <button
+        class="rebilly-instruments-button rebilly-instruments-button-secondary"
+        style="margin-top: 0; margin-bottom: var(--rebilly-spacingL)"
+        @click="state.showAmountInput = true"
+      >
+        Choose another amount
+      </button>
     </template>
   </RebillyInstrumentsLayout>
 </template>
