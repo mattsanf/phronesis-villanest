@@ -58,7 +58,8 @@ onMounted(async () => {
 <template>
   <RebillyInstrumentsLayout>
     <template #pre-form v-if="state.showAmountInput">
-      <div class="form-field">
+      <div style="display: flex">
+        <div class="form-field" style="margin-right: 1em">
         <label class="form-field-label" for="amount">Amount</label>
         <input
           id="amount"
@@ -69,6 +70,19 @@ onMounted(async () => {
           v-model="state.amount"
           required
         />
+      </div>
+      <div class="form-field">
+        <label class="form-field-label" for="currency">Currency</label>
+        <select
+          id="currency"
+          class="form-field-input"
+          v-model="state.currency"
+          required
+        >
+          <option value="USD">USD</option>
+          <option value="CAD">CAD</option>
+        </select>
+      </div>
       </div>
 
       <button
