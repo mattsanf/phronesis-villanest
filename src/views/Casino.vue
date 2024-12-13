@@ -3,13 +3,13 @@ import { onMounted, reactive } from "vue";
 import RebillyInstrumentsLayout from "../components/RebillyInstrumentsLayout.vue";
 import { useBaseConfig, websiteId } from "../components/RebillyInstruments.js";
 import { useRebillySDK } from "../vendor/rebilly-js-sdk/index.js";
-import {useRouter} from 'vue-router';
+import { useRouter } from "vue-router";
 
 const api = useRebillySDK();
 const state = reactive({
-  currency: 'USD',
-  token: null
-})
+  currency: "USD",
+  token: null,
+});
 const router = useRouter();
 
 onMounted(async () => {
@@ -33,7 +33,8 @@ const changeCurrency = async (currency) => {
 
   const requestDepositData = {
     websiteId: websiteId,
-    customerId: "cus_01J56B1FAQ1M4Y29E3VWCB41EQ",
+    customerId: "cus_01J56B1FAQ1M4Y29E3VWCB41EQ", //works...
+    // customerId: "cus_01JF0A0GKC52SFY5V49MY4BPC9",
     currency: state.currency,
     strategyId: strategyId,
   };
@@ -52,28 +53,40 @@ const changeCurrency = async (currency) => {
   };
 
   RebillyInstruments.mount(config);
-}
+};
 </script>
 
 <template>
-  <button @click="router.to({name: 'payout'})">Payout</button>
+  <button @click="router.to({ name: 'payout' })">Payout</button>
   <RebillyInstrumentsLayout>
     <template #pre-form>
       <button
         class="rebilly-instruments-button"
-        :class="{ 'rebilly-instruments-button-secondary': state.currency !== 'USD' }"
+        :class="{
+          'rebilly-instruments-button-secondary': state.currency !== 'USD',
+        }"
         @click="() => changeCurrency('USD')"
-      >USD</button>
+      >
+        USD
+      </button>
       <button
         class="rebilly-instruments-button"
-        :class="{ 'rebilly-instruments-button-secondary': state.currency !== 'CAD' }"
+        :class="{
+          'rebilly-instruments-button-secondary': state.currency !== 'CAD',
+        }"
         @click="() => changeCurrency('CAD')"
-      >CAD</button>
+      >
+        CAD
+      </button>
       <button
         class="rebilly-instruments-button"
-        :class="{ 'rebilly-instruments-button-secondary': state.currency !== 'EUR' }"
+        :class="{
+          'rebilly-instruments-button-secondary': state.currency !== 'EUR',
+        }"
         @click="() => changeCurrency('EUR')"
-      >EUR</button>
+      >
+        EUR
+      </button>
     </template>
   </RebillyInstrumentsLayout>
 </template>
