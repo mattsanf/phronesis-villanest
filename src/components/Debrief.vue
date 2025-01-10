@@ -36,7 +36,7 @@ const props = defineProps({
   </article>
 </template>
 
-<style lang="css" scoped>
+<style lang="css">
 article {
   margin-top: 1rem;
 }
@@ -52,5 +52,9 @@ h3 {
 
 p {
   margin-bottom: 1rem;
+}
+
+strong, b {
+  font-weight: bold;
 }
 </style>
