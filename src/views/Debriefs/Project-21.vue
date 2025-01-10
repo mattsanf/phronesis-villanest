@@ -31,9 +31,18 @@ import Debrief from "../../components/Debrief.vue";
             <ul>
                 <li>Recomm search would be nice to search for setting/automations/data tables</li>
                 <li>When creating a customer, the make default radio should only be visible if you have multiple emails and the first email should be treated as the primary and only show the radio if there are options for it (same for phone numbers)</li>
-                <li>Customers default instrument in Collect Payment is empty div after changing the default instrument.</li>
+                <li>
+                    <p>Customers default instrument in Collect Payment is empty div after changing the default instrument.</p>
+                    <img src="/p21/collect-payment-bug.png" />
+                </li>
                 <li>No google auto complete within recomm</li>
             </ul>
         </template>
     </Debrief>
 </template>
+
+<style lang="css" scoped>
+img {
+    width: 300px;
+}
+</style>
