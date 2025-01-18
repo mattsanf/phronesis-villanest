@@ -4,7 +4,7 @@ const debriefs = import.meta.glob("./Project-*.vue");
 
 const state = reactive({
   debriefs: Object.keys(debriefs)
-    .map(filename => filename.replace(/(\.\/|\.vue)/g, ''))
+    .map(filename => filename.replace(/(\.\/|\.vue)/g, '')).reverse()
 });
 </script>
 
