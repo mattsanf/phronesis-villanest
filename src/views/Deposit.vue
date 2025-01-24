@@ -2,14 +2,19 @@
 import { onMounted } from 'vue';
 import { useRebillySDK } from "../vendor/rebilly-js-sdk/index.js";
 import { websiteId } from "../components/RebillyInstruments.js";
+import { useRoute } from "vue-router";
+
 
 async function CreateDepositRequest() {
     const rebilly = useRebillySDK();
+    const route = useRoute();
+    const currency = route.query?.currency ?? 'CAD';
+    const id = route.query?.id ?? 'cus_01J56B1FAQ1M4Y29E3VWCB41EQ';
     return await rebilly.depositRequests.create({
         data: {
             websiteId,
-            customerId: "cus_01J56B1FAQ1M4Y29E3VWCB41EQ",
-            currency: 'CAD',
+            customerId: id,
+            currency,
             amounts: [10, 50, 100],
             customAmount: {
                 minimum: 10,
