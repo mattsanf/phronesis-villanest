@@ -28,12 +28,12 @@ onMounted(async () => {
     const response = await CreateDepositRequest();
 
     const mountElement = document.querySelector('#deposit');
-    const token = response.fields.cashierToken;
+    const cashierToken = response.fields.cashierToken;
 
     if (window.RebillyCashier) {
         RebillyCashier.renderDeposit({
             mountElement,
-            token,
+            cashierToken,
         });
     } else {
         console.error('RebillyCashier library not loaded');
