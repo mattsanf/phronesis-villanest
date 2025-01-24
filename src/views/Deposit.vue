@@ -4,7 +4,6 @@ import { useRebillySDK } from "../vendor/rebilly-js-sdk/index.js";
 import { websiteId } from "../components/RebillyInstruments.js";
 import { useRoute } from "vue-router";
 
-
 async function CreateDepositRequest() {
     const rebilly = useRebillySDK();
     const route = useRoute();
