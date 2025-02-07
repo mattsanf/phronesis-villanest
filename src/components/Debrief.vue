@@ -50,11 +50,18 @@ h3 {
   font-weight: bold;
 }
 
-p {
+p:not(:last-child) {
   margin-bottom: 1rem;
 }
 
 strong, b {
   font-weight: bold;
+}
+
+img {
+  max-width: min(600px, 100%);
+  border: 1px solid grey;
+  display: block;
+  margin: 1rem 0;
 }
 </style>

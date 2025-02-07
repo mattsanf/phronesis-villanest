@@ -13,6 +13,7 @@ const state = reactive({
     <h1>Debrief</h1>
     <router-view />
     <nav>
+      <hr style="margin-bottom: 1em"/>
       <ul>
         <li v-for="debrief in state.debriefs">
           <router-link :to="{ name: `debriefs/${debrief.toLowerCase()}` }">{{ debrief }}</router-link>
