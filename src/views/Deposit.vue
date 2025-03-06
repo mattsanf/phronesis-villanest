@@ -14,14 +14,14 @@ async function CreateDepositRequest() {
             websiteId,
             customerId: id,
             currency,
-            amounts: [10, 50, 100],
+            amounts: [5, 10, 25, 50, 100],
             customAmount: {
-                minimum: 10,
+                minimum: 5,
                 maximum: 10000,
                 multipleOf: 1,
             },
             amountLimits: {
-                minimum: 10,
+                minimum: 5,
                 maximum: 10000,
             },
         }
@@ -51,11 +51,20 @@ onMounted(async () => {
 
 <style lang="css">
 :root {
-    --r-border-radius: 0px;
-    --r-font-family: "Inter", serif;
-    --r-border-color: #AFE1AF;
+    --r-border-radius: 4px;
+    --r-button-background: cornflowerblue;
+    --r-button-background-hover: coral;
+    --r-button-primary-background-hover: coral;
 }
 #deposit {
     padding: 1em;
+}
+
+.r-payment-method-item {
+  filter: drop-shadow(grey 5px 5px 3px);
+}
+
+.choose-payment-methods-wrapper.r-show-payment-methods-list > div {
+  overflow: visible;
 }
 </style>
