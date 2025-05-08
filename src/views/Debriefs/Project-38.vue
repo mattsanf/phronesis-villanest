@@ -33,15 +33,15 @@ import DebriefItem from "../../components/DebriefItem.vue";
 
         Reloading the page would only show paypal as a method and would throw a 409 error
 
-        |||
-        |---|---|
-        |![](/p38/only-paypal.png)|![](/p38/409.png)|
+        ![](/p38/only-paypal.png)
+        
+        ![](/p38/409.png)
 
         The transaction within Recomm shows that the transaction was completed
 
-        |||
-        |---|---|
-        |![](/p38/waiting-gateway.png)|![](/p38/paypal-transaction.png)|
+        ![](/p38/waiting-gateway.png)
+        
+        ![](/p38/paypal-transaction.png)
       </debrief-item>
     </template>
   </Debrief>
