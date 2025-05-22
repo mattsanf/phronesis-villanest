@@ -15,7 +15,7 @@ import DebriefItem from "../../components/DebriefItem.vue";
         <debrief-item>
             It was not clear we could add lead source values to the url when using Rebilly instruments.
 
-            Also wasn't sure what the exact param would be. We found docs that outlined different types of params but we had to use our best guess to figure out what the param would be in the actual url.
+            Also wasn't sure what the exact param would be. We found [docs that outlined different types of params](https://www.rebilly.com/docs/tutorials/lead-source-attribution#whats-a-lead-source) but we had to use our best guess to figure out what the param would be in the actual url.
         </debrief-item>
         <debrief-item suggestion>
             When creating the automated data export we searched for a column but it was not available. If showed all possible columns, it should have displayed a message that the column was not available for this export.
