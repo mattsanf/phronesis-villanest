@@ -20,6 +20,9 @@ const props = defineProps({
   question: {
     type: Boolean,
   },
+  confusion: {
+    type: Boolean,
+  },
 });
 const legend = computed(() => {
   if (props.comment) {
@@ -36,6 +39,9 @@ const legend = computed(() => {
   }
   if (props.question) {
     return "Question ?";
+  }
+  if (props.confusion) {
+    return "Confusion";
   }
   return "Comment";
 });
@@ -62,6 +68,9 @@ const computedClass = computed(() => {
   }
   if (props.question) {
     return "question";
+  }
+  if (props.confusion) {
+    return "confusion";
   }
   return "comment";
 });
@@ -115,6 +124,12 @@ fieldset {
     border-color: orange;
     legend {
       color: orange;
+    }
+  }
+  &.confusion {
+    border-color: coral;
+    legend {
+      color: coral;
     }
   }
 }

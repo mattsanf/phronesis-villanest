@@ -5,7 +5,7 @@ import DebriefItem from "../../components/DebriefItem.vue";
 
 <template>
     <Debrief
-        title="Project 43: Cancellations (again)"
+        title="Project 44: Cancellations (again)"
         :team="['Andrew Lepekha', 'Matthew Sanford']"
     >
         <template #made-you-smile>
