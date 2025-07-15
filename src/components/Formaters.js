@@ -21,9 +21,15 @@ function formatCurrency(number, currency = "USD", options = {}) {
   }).format(numberValue);
 }
 
+function capitalize(string) {
+  if (!string) return "";
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 export function useFormatters() {
   return {
     formatDate,
-    formatCurrency
+    formatCurrency,
+    capitalize
   }
 }

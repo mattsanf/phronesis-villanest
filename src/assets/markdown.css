@@ -1,3 +1,8 @@
+h1, h2, h3 {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
 blockquote {
     --color: cornflowerblue;
     border-left: 4px solid var(--color);
@@ -6,4 +11,68 @@ blockquote {
     padding: 0.5em;
     padding-left: 1em;
     margin: 0 0 1em;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+fieldset {
+    border-radius: 5px;
+    border-width: 3px;
+    border-style: solid;
+
+    margin-top: 1rem;
+
+    legend {
+        font-weight: bold;
+    }
+
+    &.comment {
+        border-color: cornflowerblue;
+        legend {
+            color: cornflowerblue;
+        }
+    }
+    &.bug {
+        border-color: tomato;
+        legend {
+            color: tomato;
+        }
+    }
+    &.suggestion {
+        border-color: slateblue;
+        legend {
+            color: slateblue;
+        }
+    }
+    &.improvement {
+        border-color: mediumseagreen;
+        legend {
+            color: mediumseagreen;
+        }
+    }
+    &.question {
+        border-color: orange;
+        legend {
+            color: orange;
+        }
+    }
+    &.confusion {
+        border-color: coral;
+        legend {
+            color: coral;
+        }
+    }
 }

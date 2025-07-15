@@ -9,7 +9,10 @@
   "dependencies": {
     "date-fns": "2.30.0",
     "date-fns-tz": "2.0.0",
+    "js-yaml": "^4.1.0",
     "markdown-it": "^14.1.0",
+    "markdown-it-container": "^4.0.0",
+    "markdown-it-front-matter": "^0.2.4",
     "rebilly-js-sdk": "^56.59.2",
     "vue": "^3.2.37",
     "vue-router": "^4.1.3"

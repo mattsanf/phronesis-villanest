@@ -38,10 +38,22 @@ const routes = [
     children: [
       ...Object.entries(debriefs)
         .map(([filename, component]) => createRoute({filename, component}))
-        .filter(v => v)
+        .filter(v => v),
     ]
-  }
+  },
 
+  {
+    path: '/tests',
+    name: 'tests',
+    component: () => import('../views/Debriefs/Index2.vue'),
+    children: [
+      {
+        path: '/tests/:slug',
+        name: 'test',
+        component: () => import('../views/Debriefs/debrief.vue'),
+      }
+    ]
+  },
 ];
 
 const router = createRouter({
